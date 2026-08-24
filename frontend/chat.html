@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STB Bank — Chatbot Réclamations Monétique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="chat.css" />
+</head>
+<body class="chat-body">
+
+<div class="chat-shell">
+
+  <!-- ===================== Barre laterale ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/><circle cx="9" cy="13" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.2" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <span class="logo-text">STB <strong>BANK</strong></span>
+      <button type="button" id="sidebar-close" class="sidebar-close" aria-label="Fermer le menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button type="button" class="nav-item is-active" data-view="chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-3.8 7 8.5 8.5 0 0 1-9.8 0A8.38 8.38 0 0 1 3 11.5a8.5 8.5 0 0 1 8.5-8.5c.3 0 .6 0 .9.05A8.5 8.5 0 0 1 21 11.5z"/></svg>
+        <span>Nouvelle conversation</span>
+      </button>
+      <button type="button" class="nav-item" data-view="reclamations">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Mes réclamations</span>
+      </button>
+      <button type="button" class="nav-item" data-view="faq">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2 3.5"/><line x1="12" y1="16.5" x2="12.01" y2="16.5"/></svg>
+        <span>FAQ</span>
+      </button>
+      <button type="button" class="nav-item" data-view="guides">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span>Guides &amp; Aide</span>
+      </button>
+      <button type="button" class="nav-item" data-view="apropos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16.5"/><line x1="12" y1="7.5" x2="12.01" y2="7.5"/></svg>
+        <span>À propos</span>
+      </button>
+      <button type="button" class="nav-item hidden" id="nav-dashboard" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        <span>Tableau de bord</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-help">
+      <span class="help-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      </span>
+      <strong>Besoin d'aide humaine ?</strong>
+      <p>Nos conseillers sont disponibles du lundi au vendredi, de 8h à 17h.</p>
+      <button type="button" id="contact-btn" class="btn-outline-sm">
+        Contacter un conseiller
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+
+    <div class="sidebar-user">
+      <span class="user-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+      <span class="user-info">
+        <span id="user-name" class="user-name">…</span>
+        <span class="user-status"><span class="status-dot"></span>En ligne</span>
+      </span>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- ===================== Zone principale ===================== -->
+  <div class="chat-page">
+
+    <header class="chat-header">
+      <div class="chat-header-left">
+        <button type="button" id="sidebar-open" class="sidebar-open" aria-label="Ouvrir le menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/><circle cx="9" cy="13" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div>
+          <h1 id="view-title">Chatbot Réclamations <span>Monétique</span></h1>
+          <p class="chat-status"><span class="status-dot"></span>Assistant STB en ligne</p>
+        </div>
+      </div>
+      <div class="chat-header-right">
+        <button type="button" id="logout-btn" class="btn-icon-header" title="Déconnexion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ---------- Vue : Chat ---------- -->
+    <main class="chat-main" id="view-chat">
+      <div id="messages" class="chat-messages" role="log" aria-live="polite" aria-label="Conversation avec l'assistant STB"></div>
+      <div id="typing-indicator" class="typing-row hidden" aria-hidden="true">
+        <span class="msg-avatar msg-avatar--bot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/><circle cx="9" cy="13" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div class="typing-indicator"><span></span><span></span><span></span></div>
+      </div>
+    </main>
+
+    <footer class="chat-input-bar" id="view-chat-input">
+      <div id="attachment-preview" class="attachment-preview hidden"></div>
+      <div id="voice-caption" class="voice-caption hidden" aria-live="polite"></div>
+      <form id="chat-form" class="chat-form" autocomplete="off">
+        <button type="button" id="attach-btn" class="btn-icon" title="Joindre un justificatif" aria-label="Joindre un justificatif (photo ou PDF)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </button>
+        <input type="file" id="attach-input" class="hidden" accept="image/jpeg,image/png,image/webp,application/pdf" />
+        <button type="button" id="mic-btn" class="btn-icon" title="Message vocal" aria-label="Enregistrer un message vocal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Décrivez votre réclamation (carte, paiement, DAB, application...)"
+          autocomplete="off"
+          aria-label="Votre message"
+        />
+        <button type="submit" id="send-btn" class="btn-icon btn-icon--primary" title="Envoyer" aria-label="Envoyer le message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+      <p id="chat-error" class="chat-error" role="alert"></p>
+    </footer>
+
+    <!-- ---------- Vues statiques : Reclamations / FAQ / Guides / A propos / Dashboard ---------- -->
+    <main class="chat-main static-view hidden" id="view-reclamations"></main>
+    <main class="chat-main static-view hidden" id="view-faq"></main>
+    <main class="chat-main static-view hidden" id="view-guides"></main>
+    <main class="chat-main static-view hidden" id="view-apropos"></main>
+    <main class="chat-main static-view hidden" id="view-dashboard"></main>
+
+  </div>
+</div>
+
+<!-- ---------- Modale : contacter un conseiller ---------- -->
+<div class="modal-backdrop hidden" id="contact-modal">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <button type="button" class="modal-close" id="contact-modal-close" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 id="contact-modal-title">Parler à un conseiller</h2>
+    <p>Le chatbot ne suffit pas ? Un conseiller humain reste disponible :</p>
+    <ul class="modal-list">
+      <li><strong>Centre d'appel :</strong> composez le numéro indiqué au dos de votre carte bancaire</li>
+      <li><strong>En agence :</strong> présentez-vous avec une pièce d'identité</li>
+      <li><strong>Horaires :</strong> du lundi au vendredi, de 8h à 17h</li>
+    </ul>
+  </div>
+</div>
+
+<audio id="tts-audio" class="hidden"></audio>
+
+<script src="config.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>
