@@ -274,25 +274,4 @@ pipeline that shaped it:
   54-entry knowledge base rather than freely generated, to eliminate
   hallucinated deadlines, amounts, or procedures.
 
----
 
-## Known limitations / before real production use
-
-- Wire up a real email/SMS provider in `notificationService.js`.
-- Serve over HTTPS only.
-- Replace `knowledge_base.py` with STB's actual internal procedures (the
-  current one is illustrative, built without access to real internal
-  documentation).
-- Add two-factor authentication (2FA) if required.
-- Host `chatbot-api` on a strictly private network.
-- Back up `backend/stb.db` (now holds claims and evidence references, not
-  just accounts) and `backend/uploads/` regularly.
-- Have the bank's security team audit the code before handling real
-  customer data.
-
----
-
-## License
-
-Academic / internship project. No license specified — all rights reserved
-by the author unless stated otherwise.
